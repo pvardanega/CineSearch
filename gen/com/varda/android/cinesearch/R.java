@@ -20,6 +20,7 @@ public final class R {
     public static final class id {
         public static final int movie_search_radio_button=0x7f050002;
         public static final int people_search_radio_button=0x7f050003;
+        public static final int reset_button=0x7f050005;
         public static final int search_button=0x7f050004;
         public static final int search_edit_text=0x7f050000;
         public static final int search_radio_group=0x7f050001;

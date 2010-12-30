@@ -6,7 +6,7 @@
     <application android:icon="@drawable/icon"
                  android:label="@string/app_name"
                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".SearchActivity">
+        <activity android:name=".searchform.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
