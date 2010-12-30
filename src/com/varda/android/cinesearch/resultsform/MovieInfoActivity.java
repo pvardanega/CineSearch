@@ -23,8 +23,6 @@ public class MovieInfoActivity extends Activity {
 
     private TextView nameTextView;
     private TextView ratingTextView;
-    private TextView popularityTextView;
-    private TextView scoreTextView;
     private TextView releaseTextView;
     private TextView languageTextView;
     private ImageView imageView;
@@ -37,10 +35,6 @@ public class MovieInfoActivity extends Activity {
 
         this.movie = (Movie) getIntent().getSerializableExtra("movie");
         this.setUI();
-    }
-
-    private void longToast(String message) {
-        Toast.makeText(MovieInfoActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
     private void setUI() {

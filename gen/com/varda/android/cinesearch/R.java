@@ -31,6 +31,8 @@ public final class R {
         public static final int movie_row_release=0x7f060007;
         public static final int movie_search_radio_button=0x7f060002;
         public static final int people_search_radio_button=0x7f060003;
+        public static final int person_name=0x7f06000f;
+        public static final int person_poster=0x7f06000e;
         public static final int reset_button=0x7f060005;
         public static final int search_button=0x7f060004;
         public static final int search_edit_text=0x7f060000;
@@ -41,7 +43,8 @@ public final class R {
         public static final int movie_data_row=0x7f030001;
         public static final int movie_layout=0x7f030002;
         public static final int movies_layout=0x7f030003;
-        public static final int persons_layout=0x7f030004;
+        public static final int person_layout=0x7f030004;
+        public static final int persons_layout=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
