@@ -18,9 +18,7 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("People [name=");
         builder.append(name);
-        builder.append("]");
         return builder.toString();
     }
 

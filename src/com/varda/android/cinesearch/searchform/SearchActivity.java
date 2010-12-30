@@ -12,6 +12,8 @@ import android.widget.*;
 import com.varda.android.cinesearch.R;
 import com.varda.android.cinesearch.resultsform.MovieInfoActivity;
 import com.varda.android.cinesearch.resultsform.MoviesListActivity;
+import com.varda.android.cinesearch.resultsform.PersonInfoActivity;
+import com.varda.android.cinesearch.resultsform.PersonsListActivity;
 import com.varda.android.cinesearch.searchform.seekers.GenericSeeker;
 import com.varda.android.cinesearch.searchform.seekers.MovieSeeker;
 import com.varda.android.cinesearch.searchform.seekers.PersonSeeker;
@@ -158,8 +160,16 @@ public class SearchActivity extends Activity {
                         progressDialog = null;
                     }
                     if (results != null) {
-                        for (Person person : results) {
-                            longToast(person.name + " - " + person.score);
+                        if (results.size() == 0) {
+                            longToast(getString(R.string.no_person_found));
+                        } else if (results.size() == 1) {
+                            Intent intent = new Intent(SearchActivity.this, PersonInfoActivity.class);
+                            intent.putExtra("person", results.get(0));
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(SearchActivity.this, PersonsListActivity.class);
+                            intent.putExtra("persons", results);
+                            startActivity(intent);
                         }
                     }
                 }

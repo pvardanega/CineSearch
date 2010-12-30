@@ -41,6 +41,7 @@ public final class R {
         public static final int movie_data_row=0x7f030001;
         public static final int movie_layout=0x7f030002;
         public static final int movies_layout=0x7f030003;
+        public static final int persons_layout=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -48,6 +49,7 @@ public final class R {
         public static final int clear_search=0x7f050004;
         public static final int movies=0x7f050002;
         public static final int no_movie_found=0x7f050006;
+        public static final int no_person_found=0x7f050007;
         public static final int people=0x7f050003;
         public static final int search=0x7f050001;
     }
