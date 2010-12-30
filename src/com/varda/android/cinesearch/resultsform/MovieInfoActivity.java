@@ -18,9 +18,17 @@ import java.lang.ref.WeakReference;
 
 public class MovieInfoActivity extends Activity {
 
-    private static final String IMDB_BASE_URL = "http://m.imdb.com/title/";
     private Movie movie;
     private String posterUrl;
+
+    private TextView nameTextView;
+    private TextView ratingTextView;
+    private TextView popularityTextView;
+    private TextView scoreTextView;
+    private TextView releaseTextView;
+    private TextView languageTextView;
+    private ImageView imageView;
+    private TextView descriptionTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,68 +44,43 @@ public class MovieInfoActivity extends Activity {
     }
 
     private void setUI() {
+        HttpRetriever httpRetriever = new HttpRetriever();
+
         // Name
-        TextView nameTextView = (TextView) this.findViewById(R.id.movie_name);
-        nameTextView.setText(movie.name);
+        this.nameTextView = (TextView) this.findViewById(R.id.movie_name);
+        this.nameTextView.setText(movie.name);
+
         // Rating
-        TextView ratingTextView = (TextView) this.findViewById(R.id.movie_rate);
-        ratingTextView.setText("Rating: " + movie.rating);
+        this.ratingTextView = (TextView) this.findViewById(R.id.movie_rate);
+        this.ratingTextView.setText("Rating: " + movie.rating);
+
         // Popularity
-        TextView popularityTextView = (TextView) this.findViewById(R.id.movie_popularity);
-        ratingTextView.setText("Popularity: " + movie.popularity);
+        this.popularityTextView = (TextView) this.findViewById(R.id.movie_popularity);
+        this.popularityTextView.setText("Popularity: " + movie.popularity);
+
         // Score
-        TextView scoreTextView = (TextView) this.findViewById(R.id.movie_score);
-        ratingTextView.setText("Score: " + movie.score);
+        this.scoreTextView = (TextView) this.findViewById(R.id.movie_score);
+        this.scoreTextView.setText("Score: " + movie.score);
+
         // Release
-        TextView releaseTextView = (TextView) this.findViewById(R.id.movie_release_date);
-        releaseTextView.setText("Release date:" + movie.released);
+        this.releaseTextView = (TextView) this.findViewById(R.id.movie_release_date);
+        this.releaseTextView.setText("Release date: " + movie.released);
+
         // Language
-        TextView languageTextView = (TextView) this.findViewById(R.id.movie_lang);
-        languageTextView.setText("Language:" + movie.language);
+        this.languageTextView = (TextView) this.findViewById(R.id.movie_lang);
+        this.languageTextView.setText("Language: " + movie.language);
+
         // Thumb image
-        ImageView imageView = (ImageView) this.findViewById(R.id.movie_poster);
+        this.imageView = (ImageView) this.findViewById(R.id.movie_poster);
         this.posterUrl = movie.retrieveThumbnail();
-
-        if (this.posterUrl != null) {
-            new BitmapDownloaderTask(imageView).execute(this.posterUrl);
+        if (this.posterUrl == null) {
+            this.imageView.setImageBitmap(null);
         } else {
-            imageView.setImageBitmap(null);
+            this.imageView.setImageBitmap(httpRetriever.retrieveBitmap(this.posterUrl));
         }
+
         // Description
-        TextView descriptionTextView = (TextView) this.findViewById(R.id.movie_description);
-        languageTextView.setText(movie.overview);
-    }
-
-    private class BitmapDownloaderTask extends AsyncTask<String, Void, Bitmap> {
-
-        private String url;
-        private final WeakReference<ImageView> imageViewWeakReference;
-        private HttpRetriever httpRetriever = new HttpRetriever();
-
-        public BitmapDownloaderTask(ImageView imageView) {
-            this.imageViewWeakReference = new WeakReference<ImageView>(imageView);
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... params) {
-            this.url = params[0];
-            InputStream in = httpRetriever.retrieveStream(url);
-            if (in == null) {
-                return null;
-            }
-            return BitmapFactory.decodeStream(new FlushedInputStream(in));
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            if (isCancelled()) {
-                bitmap = null;
-            }
-
-            if (this.imageViewWeakReference != null) {
-                ImageView imageView = this.imageViewWeakReference.get();
-                imageView.setImageBitmap(bitmap);
-            }
-        }
+        this.descriptionTextView = (TextView) this.findViewById(R.id.movie_description);
+        this.descriptionTextView.setText(movie.overview);
     }
 }

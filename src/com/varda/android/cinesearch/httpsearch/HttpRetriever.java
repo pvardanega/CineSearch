@@ -42,7 +42,9 @@ public class HttpRetriever {
         return null;
     }
 
-    public InputStream retrieveStream(String url) {
+    public Bitmap retrieveBitmap(String url) {
+        InputStream inputStream = null;
+        Bitmap result = null;
         HttpGet getRequest = new HttpGet(url);
 
         try {
@@ -55,22 +57,11 @@ public class HttpRetriever {
             }
 
             HttpEntity getResponseEntity = getResponse.getEntity();
-            return getResponseEntity.getContent();
+            inputStream = getResponseEntity.getContent();
+            result = BitmapFactory.decodeStream(new FlushedInputStream(inputStream));
         } catch (final IOException e) {
             getRequest.abort();
             Log.w(getClass().getSimpleName(), "Error for URL " + url, e);
-        }
-
-        return null;
-    }
-
-    public Bitmap retrieveBitmap(String url) {
-        InputStream inputStream = null;
-
-        try {
-            inputStream = this.retrieveStream(url);
-            final Bitmap bitmap = BitmapFactory.decodeStream(new FlushedInputStream(inputStream));
-            return bitmap;
         } finally {
             try {
                 inputStream.close();
@@ -78,5 +69,7 @@ public class HttpRetriever {
                 Log.w(getClass().getSimpleName(), "Error while trying to close inputStream created with URL " + url, e);
             }
         }
+
+        return result;
     }
 }
