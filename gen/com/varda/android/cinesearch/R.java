@@ -20,12 +20,12 @@ public final class R {
     public static final class id {
         public static final int movie_description=0x7f05000d;
         public static final int movie_lang=0x7f05000c;
-        public static final int movie_name=0x7f050007;
-        public static final int movie_popularity=0x7f050009;
-        public static final int movie_poster=0x7f050006;
-        public static final int movie_rate=0x7f050008;
+        public static final int movie_name=0x7f050009;
+        public static final int movie_poster=0x7f050008;
+        public static final int movie_rate=0x7f05000a;
         public static final int movie_release_date=0x7f05000b;
-        public static final int movie_score=0x7f05000a;
+        public static final int movie_row_name=0x7f050006;
+        public static final int movie_row_release=0x7f050007;
         public static final int movie_search_radio_button=0x7f050002;
         public static final int people_search_radio_button=0x7f050003;
         public static final int reset_button=0x7f050005;
@@ -35,8 +35,9 @@ public final class R {
     }
     public static final class layout {
         public static final int main=0x7f030000;
-        public static final int movie_layout=0x7f030001;
-        public static final int movies_layout=0x7f030002;
+        public static final int movie_data_row=0x7f030001;
+        public static final int movie_layout=0x7f030002;
+        public static final int movies_layout=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

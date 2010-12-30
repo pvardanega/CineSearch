@@ -54,21 +54,13 @@ public class MovieInfoActivity extends Activity {
         this.ratingTextView = (TextView) this.findViewById(R.id.movie_rate);
         this.ratingTextView.setText("Rating: " + movie.rating);
 
-        // Popularity
-        this.popularityTextView = (TextView) this.findViewById(R.id.movie_popularity);
-        this.popularityTextView.setText("Popularity: " + movie.popularity);
-
-        // Score
-        this.scoreTextView = (TextView) this.findViewById(R.id.movie_score);
-        this.scoreTextView.setText("Score: " + movie.score);
-
         // Release
         this.releaseTextView = (TextView) this.findViewById(R.id.movie_release_date);
         this.releaseTextView.setText("Release date: " + movie.released);
 
         // Language
         this.languageTextView = (TextView) this.findViewById(R.id.movie_lang);
-        this.languageTextView.setText("Language: " + movie.language);
+        this.languageTextView.setText("Language: " + movie.language.toUpperCase());
 
         // Thumb image
         this.imageView = (ImageView) this.findViewById(R.id.movie_poster);
