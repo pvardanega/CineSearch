@@ -4,12 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="6dip">
+    android:padding="10dip">
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="6dip">
+        android:paddingBottom="10dip">
 
         <ImageView android:id="@+id/movie_poster"
             android:layout_width="wrap_content"
@@ -30,7 +30,8 @@
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:textStyle="bold"
-                android:textSize="14dip"
+                android:textSize="16dip"
+                android:textColor="@color/blue"
                 />
 
             <TextView
@@ -64,9 +65,16 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_weight="1"
+        android:background="@color/blue"/>
+
     <TextView android:id="@+id/movie_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:paddingTop="10dip"/>
 
 </LinearLayout>

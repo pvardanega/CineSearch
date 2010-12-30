@@ -15,6 +15,7 @@
         android:ellipsize="marquee"
         android:textStyle="bold"
         android:textSize="16dip"
+        android:textColor="@color/blue"
         />
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_weight="1"
         android:singleLine="true"
         android:ellipsize="marquee"
+        android:textStyle="italic"
         />
 
 </LinearLayout>
