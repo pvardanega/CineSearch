@@ -6,4 +6,5 @@
     <string name="people">People</string>
     <string name="clear_search">Reset</string>
     <string name="app_short_desc">Search information about your favorite movies and actors.</string>
+    <string name="no_movie_found">Sorry, no movie found.</string>
 </resources>
