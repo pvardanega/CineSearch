@@ -12,8 +12,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
-        public static final int movie_icon=0x7f020001;
-        public static final int people_icon=0x7f020002;
+        public static final int logo=0x7f020001;
+        public static final int movie_icon=0x7f020002;
+        public static final int people_icon=0x7f020003;
+        public static final int search=0x7f020004;
     }
     public static final class id {
         public static final int movie_search_radio_button=0x7f050002;
@@ -27,10 +29,10 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int app_title=0x7f040001;
-        public static final int clear_search=0x7f040005;
-        public static final int movies=0x7f040003;
-        public static final int people=0x7f040004;
-        public static final int search=0x7f040002;
+        public static final int app_short_desc=0x7f040005;
+        public static final int clear_search=0x7f040004;
+        public static final int movies=0x7f040002;
+        public static final int people=0x7f040003;
+        public static final int search=0x7f040001;
     }
 }

@@ -7,6 +7,13 @@
     android:padding="10dip"
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:paddingBottom="10dip"
+    />
+
     <EditText
         android:id="@+id/search_edit_text"
         android:text="@string/search"
@@ -63,6 +70,15 @@
             android:width="100dip"
         />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_short_desc"
+        android:textStyle="bold|italic"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dip"
+    />
 
 </LinearLayout>
 
