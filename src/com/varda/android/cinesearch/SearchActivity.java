@@ -1,6 +1,7 @@
 package com.varda.android.cinesearch;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 
 public class SearchActivity extends Activity {

@@ -5,4 +5,5 @@
     <string name="search">Search</string>
     <string name="movies">Movies</string>
     <string name="people">People</string>
+    <string name="clear_search">Reset</string>
 </resources>
