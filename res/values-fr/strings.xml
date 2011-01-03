@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CineSearch</string>
+    <string name="search">Rechercher</string>
+    <string name="movies">Film</string>
+    <string name="people">Acteur</string>
+    <string name="clear_search">Réinitialiser</string>
+    <string name="app_short_desc">Rechercher des informations sur vos films et acteurs favoris.</string>
+    <string name="no_movie_found">Désolé, aucun film trouvé.</string>
+    <string name="no_person_found">Désolé, aucun acteur trouvé.</string>
+
+    <string name="date_source_format">yyyy-MM-dd</string>
+</resources>
