@@ -8,4 +8,7 @@
     <string name="app_short_desc">Search information about your favorite movies and actors.</string>
     <string name="no_movie_found">Sorry, no movie found.</string>
     <string name="no_person_found">Sorry, no people found.</string>
+
+    <string name="date_source_format">yyyy-MM-dd</string>
+    <string name="date_format">MM, yyyy</string>
 </resources>

@@ -2,6 +2,7 @@ package com.varda.android.cinesearch.resultsform.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,12 @@ import android.widget.TextView;
 import com.varda.android.cinesearch.R;
 import com.varda.android.cinesearch.xmlbiddings.Movie;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
@@ -41,7 +47,16 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
             // Release
             TextView releaseTextView = (TextView) view.findViewById(R.id.movie_row_release);
-            releaseTextView.setText("Release date: " + movie.released);
+            DateFormat sdf = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+            SimpleDateFormat sourceSdf = new SimpleDateFormat(this.context.getString(R.string.date_source_format));
+            try {
+                Date releaseDate = sourceSdf.parse(movie.released);
+                releaseTextView.setText("Release date: " + sdf.format(releaseDate));
+            } catch (ParseException e) {
+                Log.w(getClass().getSimpleName(), "Error while parsing date " + movie.released, e);
+                releaseTextView.setText("Release date: " + movie.released);
+            }
+
         }
 
         return view;

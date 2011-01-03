@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,11 @@ import com.varda.android.cinesearch.xmlbiddings.Movie;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MovieInfoActivity extends Activity {
 
@@ -50,7 +56,15 @@ public class MovieInfoActivity extends Activity {
 
         // Release
         this.releaseTextView = (TextView) this.findViewById(R.id.movie_release_date);
-        this.releaseTextView.setText("Release date: " + movie.released);
+        DateFormat sdf = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+        SimpleDateFormat sourceSdf = new SimpleDateFormat(this.getString(R.string.date_source_format));
+        try {
+            Date releaseDate = sourceSdf.parse(movie.released);
+            this.releaseTextView.setText("Release date: " + sdf.format(releaseDate));
+        } catch (ParseException e) {
+            Log.w(getClass().getSimpleName(), "Error while parsing date " + movie.released, e);
+            this.releaseTextView.setText("Release date: " + movie.released);
+        }
 
         // Language
         this.languageTextView = (TextView) this.findViewById(R.id.movie_lang);
