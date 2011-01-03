@@ -6,14 +6,16 @@ import com.varda.android.cinesearch.httpsearch.HttpRetriever;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public abstract class GenericSeeker<E> {
 
     protected static final String BASE_URL = "http://api.themoviedb.org/2.1/";
-    protected static final String LANGUAGE_PATH = "en/";
     protected static final String XML_FORMAT = "xml/";
     protected static final String API_KEY = "c1e51d0e9a59526f000289bd0a7850ec";
     protected static final String SLASH = "/";
+    // Format: lang-COUNTRY
+    protected static final String LANGUAGE_PATH = Locale.getDefault().toString().replaceFirst("_", "-") + SLASH;
 
     protected HttpRetriever httpRetriever = new HttpRetriever();
 
@@ -32,6 +34,7 @@ public abstract class GenericSeeker<E> {
         buffer.append(SLASH);
         try {
             buffer.append(URLEncoder.encode(query, "UTF-8"));
+            Log.w(getClass().getSimpleName(), buffer.toString());
         } catch (UnsupportedEncodingException e) {
             Log.w(getClass().getSimpleName(), "Encoding not supported!", e);
         }
