@@ -37,6 +37,7 @@ public class MovieInfoActivity extends Activity {
 
         this.movie = (Movie) getIntent().getSerializableExtra("movie");
         this.setUI();
+        this.setVisible(true);
     }
 
     private void setUI() {

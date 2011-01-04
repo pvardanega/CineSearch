@@ -13,14 +13,15 @@
 
         <ImageView android:id="@+id/movie_poster"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="4dip"/>
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dip"/>
 
         <LinearLayout
             android:orientation="vertical"
+            android:gravity="top|left"
             android:layout_width="0dip"
             android:layout_weight="1"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/movie_name"
