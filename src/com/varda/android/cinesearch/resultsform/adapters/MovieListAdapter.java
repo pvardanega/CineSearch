@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.varda.android.cinesearch.R;
 import com.varda.android.cinesearch.xmlbiddings.Movie;
@@ -18,12 +19,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class MovieAdapter extends ArrayAdapter<Movie> {
+public class MovieListAdapter extends ArrayAdapter<Movie> {
 
     private ArrayList<Movie> moviesList;
     private Activity context;
 
-    public MovieAdapter(Activity context, int textViewResourceId, ArrayList<Movie> movieDataItems) {
+    public MovieListAdapter(Activity context, int textViewResourceId, ArrayList<Movie> movieDataItems) {
         super(context, textViewResourceId, movieDataItems);
         this.context = context;
         this.moviesList = movieDataItems;
@@ -55,6 +56,15 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
             } catch (ParseException e) {
                 Log.w(getClass().getSimpleName(), "Error while parsing date " + movie.released, e);
                 releaseTextView.setText("Release date: " + movie.released);
+            }
+
+            // Poster
+            ImageView imageView = (ImageView) view.findViewById(R.id.movie_row_thumb);
+            String posterUrl = movie.retrieveThumbnail();
+            if (posterUrl == null) {
+                imageView.setImageBitmap(null);
+            } else {
+                new BitmapDownloaderTask(imageView).execute(posterUrl);
             }
 
         }

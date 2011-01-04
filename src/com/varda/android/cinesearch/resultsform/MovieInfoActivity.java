@@ -1,21 +1,15 @@
 package com.varda.android.cinesearch.resultsform;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.varda.android.cinesearch.R;
-import com.varda.android.cinesearch.httpsearch.FlushedInputStream;
 import com.varda.android.cinesearch.httpsearch.HttpRetriever;
+import com.varda.android.cinesearch.resultsform.adapters.BitmapDownloaderTask;
 import com.varda.android.cinesearch.xmlbiddings.Movie;
 
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,7 +70,7 @@ public class MovieInfoActivity extends Activity {
         if (this.posterUrl == null) {
             this.imageView.setImageBitmap(null);
         } else {
-            this.imageView.setImageBitmap(httpRetriever.retrieveBitmap(this.posterUrl));
+            new BitmapDownloaderTask(this.imageView).execute(this.posterUrl);
         }
 
         // Description

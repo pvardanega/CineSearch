@@ -42,12 +42,12 @@ public class HttpRetriever {
         return null;
     }
 
-    public Bitmap retrieveBitmap(String url) {
-        InputStream inputStream = null;
-        Bitmap result = null;
+    public InputStream retrieveStream(String url) {
+
         HttpGet getRequest = new HttpGet(url);
 
         try {
+
             HttpResponse getResponse = client.execute(getRequest);
             final int statusCode = getResponse.getStatusLine().getStatusCode();
 
@@ -57,11 +57,23 @@ public class HttpRetriever {
             }
 
             HttpEntity getResponseEntity = getResponse.getEntity();
-            inputStream = getResponseEntity.getContent();
-            result = BitmapFactory.decodeStream(new FlushedInputStream(inputStream));
-        } catch (final IOException e) {
+            return getResponseEntity.getContent();
+
+        } catch (IOException e) {
             getRequest.abort();
             Log.w(getClass().getSimpleName(), "Error for URL " + url, e);
+        }
+
+        return null;
+
+    }
+
+    public Bitmap retrieveBitmap(String url) {
+        InputStream inputStream = null;
+        Bitmap result = null;
+        try {
+            inputStream = this.retrieveStream(url);
+            result = BitmapFactory.decodeStream(new FlushedInputStream(inputStream));
         } finally {
             try {
                 inputStream.close();

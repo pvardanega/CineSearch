@@ -21,18 +21,19 @@ public final class R {
         public static final int search=0x7f020004;
     }
     public static final class id {
-        public static final int movie_description=0x7f06000d;
-        public static final int movie_lang=0x7f06000c;
-        public static final int movie_name=0x7f060009;
-        public static final int movie_poster=0x7f060008;
-        public static final int movie_rate=0x7f06000a;
-        public static final int movie_release_date=0x7f06000b;
-        public static final int movie_row_name=0x7f060006;
-        public static final int movie_row_release=0x7f060007;
+        public static final int movie_description=0x7f06000e;
+        public static final int movie_lang=0x7f06000d;
+        public static final int movie_name=0x7f06000a;
+        public static final int movie_poster=0x7f060009;
+        public static final int movie_rate=0x7f06000b;
+        public static final int movie_release_date=0x7f06000c;
+        public static final int movie_row_name=0x7f060007;
+        public static final int movie_row_release=0x7f060008;
+        public static final int movie_row_thumb=0x7f060006;
         public static final int movie_search_radio_button=0x7f060002;
         public static final int people_search_radio_button=0x7f060003;
-        public static final int person_name=0x7f06000f;
-        public static final int person_poster=0x7f06000e;
+        public static final int person_name=0x7f060010;
+        public static final int person_poster=0x7f06000f;
         public static final int reset_button=0x7f060005;
         public static final int search_button=0x7f060004;
         public static final int search_edit_text=0x7f060000;
