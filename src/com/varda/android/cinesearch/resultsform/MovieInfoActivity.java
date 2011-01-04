@@ -28,6 +28,8 @@ public class MovieInfoActivity extends Activity {
     private ImageView imageView;
     private TextView descriptionTextView;
 
+    private static Locale[] locales = Locale.getAvailableLocales();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,6 @@ public class MovieInfoActivity extends Activity {
     }
 
     private void setUI() {
-        HttpRetriever httpRetriever = new HttpRetriever();
 
         // Name
         this.nameTextView = (TextView) this.findViewById(R.id.movie_name);
@@ -62,7 +63,17 @@ public class MovieInfoActivity extends Activity {
 
         // Language
         this.languageTextView = (TextView) this.findViewById(R.id.movie_lang);
-        this.languageTextView.setText("Language: " + movie.language.toUpperCase());
+        StringBuilder language = new StringBuilder();
+        language.append("Language: ");
+        Locale locale = getLocaleFromLanguage(movie.language);
+        StringBuilder localeCountryName = new StringBuilder(locale.getDisplayName());
+        if (locale == null || "".equals(localeCountryName)) {
+            language.append(movie.language.toUpperCase());
+        } else {
+            // Majuscule sur la première lettre
+            language.append(localeCountryName.replace(0, 1, localeCountryName.substring(0, 1).toUpperCase()));
+        }
+        this.languageTextView.setText(language);
 
         // Thumb image
         this.imageView = (ImageView) this.findViewById(R.id.movie_poster);
@@ -76,5 +87,14 @@ public class MovieInfoActivity extends Activity {
         // Description
         this.descriptionTextView = (TextView) this.findViewById(R.id.movie_description);
         this.descriptionTextView.setText(movie.overview);
+    }
+
+    private Locale getLocaleFromLanguage(String lang) {
+        for (Locale locale : locales) {
+            if (lang.equals(locale.getLanguage())) {
+                return locale;
+            }
+        }
+        return null;
     }
 }
